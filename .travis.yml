@@ -6,6 +6,8 @@ matrix:
   include:
     - python: 2.7
       env: NO_REMOTE=true, TOXENV=py27
+    - python: 3.5
+      env: NO_REMOTE=true, TOXENV=py35
     - python: 3.6
       env: NO_REMOTE=true, TOXENV=py36
     - python: 3.7
