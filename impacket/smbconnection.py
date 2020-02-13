@@ -451,7 +451,7 @@ class SMBConnection:
             _, flags2 = self._SMBConnection.get_flags()
 
             pathName = pathName.replace('/', '\\')
-            packetPathName = pathName.encode('utf-16le') if flags2 & smb.SMB.FLAGS2_UNICODE else pathName
+            packetPathName = pathName.encode('utf-8') if flags2 & smb.SMB.FLAGS2_UNICODE else pathName
 
             ntCreate = smb.SMBCommand(smb.SMB.SMB_COM_NT_CREATE_ANDX)
             ntCreate['Parameters'] = smb.SMBNtCreateAndX_Parameters()
@@ -513,7 +513,7 @@ class SMBConnection:
             _, flags2 = self._SMBConnection.get_flags()
 
             pathName = pathName.replace('/', '\\')
-            packetPathName = pathName.encode('utf-16le') if flags2 & smb.SMB.FLAGS2_UNICODE else pathName
+            packetPathName = pathName.encode('utf-8') if flags2 & smb.SMB.FLAGS2_UNICODE else pathName
 
             ntCreate = smb.SMBCommand(smb.SMB.SMB_COM_NT_CREATE_ANDX)
             ntCreate['Parameters'] = smb.SMBNtCreateAndX_Parameters()
@@ -869,11 +869,11 @@ class SMBConnection:
                             creationOption=FILE_OPEN_REPARSE_POINT)
 
         if target.startswith("\\"):
-            fixed_name  = target.encode('utf-16le')
+            fixed_name  = target.encode('utf-8')
         else:
-            fixed_name  = ("\\??\\" + target).encode('utf-16le')
+            fixed_name  = ("\\??\\" + target).encode('utf-8')
 
-        name        = target.encode('utf-16le')
+        name        = target.encode('utf-8')
 
         reparseData = MOUNT_POINT_REPARSE_DATA_STRUCTURE()
 

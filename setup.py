@@ -7,7 +7,7 @@ import platform
 
 from setuptools import setup
 
-PACKAGE_NAME = "impacket"
+PACKAGE_NAME = "impacket-py35"
 
 if platform.system() != 'Darwin':
     data_files = [(os.path.join('share', 'doc', PACKAGE_NAME), ['README.md', 'LICENSE']+glob.glob('doc/*'))]
