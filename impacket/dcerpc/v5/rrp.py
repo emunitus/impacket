@@ -684,26 +684,26 @@ def packValue(valueType, value):
         retData = pack('>L', value)
     elif valueType == REG_EXPAND_SZ:
         try:
-            retData = value.encode('utf-16le')
+            retData = value.encode('utf-8')
         except UnicodeDecodeError:
             import sys
-            retData = value.decode(sys.getfilesystemencoding()).encode('utf-16le')
+            retData = value.decode(sys.getfilesystemencoding()).encode('utf-8')
     elif valueType == REG_MULTI_SZ:
         try:
-            retData = value.encode('utf-16le')
+            retData = value.encode('utf-8')
         except UnicodeDecodeError:
             import sys
-            retData = value.decode(sys.getfilesystemencoding()).encode('utf-16le')
+            retData = value.decode(sys.getfilesystemencoding()).encode('utf-8')
     elif valueType == REG_QWORD:
         retData = pack('<Q', value)
     elif valueType == REG_QWORD_LITTLE_ENDIAN:
         retData = pack('>Q', value)
     elif valueType == REG_SZ:
         try:
-            retData = value.encode('utf-16le')
+            retData = value.encode('utf-8')
         except UnicodeDecodeError:
             import sys
-            retData = value.decode(sys.getfilesystemencoding()).encode('utf-16le')
+            retData = value.decode(sys.getfilesystemencoding()).encode('utf-8')
     else:
         retData = value
 
@@ -715,15 +715,15 @@ def unpackValue(valueType, value):
     elif valueType == REG_DWORD_BIG_ENDIAN:
         retData = unpack('>L', ''.join(value))[0]
     elif valueType == REG_EXPAND_SZ:
-        retData = ''.join(value).decode('utf-16le')
+        retData = ''.join(value).decode('utf-8')
     elif valueType == REG_MULTI_SZ:
-        retData = ''.join(value).decode('utf-16le')
+        retData = ''.join(value).decode('utf-8')
     elif valueType == REG_QWORD:
         retData = unpack('<Q', ''.join(value))[0]
     elif valueType == REG_QWORD_LITTLE_ENDIAN:
         retData = unpack('>Q', ''.join(value))[0]
     elif valueType == REG_SZ:
-        retData = b''.join(value).decode('utf-16le')
+        retData = b''.join(value).decode('utf-8')
     else:
         retData = b''.join(value)
 
